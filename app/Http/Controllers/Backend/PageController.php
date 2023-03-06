@@ -55,7 +55,7 @@ class PageController extends Controller
             'title' => ['required'],
             'slug' => ['required'],
             'content' => ['required'],
-            'image' => ['required', 'mimes:jpg,jpeg,png'],
+            'image' => ['mimes:jpg,jpeg,png'],
             'template' => ['required'],
         ]);
 
@@ -63,6 +63,8 @@ class PageController extends Controller
             $pageValue = $request->image;
             $filename = time() . date('Y-m-d') . '.' . $pageValue->getClientOriginalExtension();
             $request->image->storeAs('page', $filename, 'public');
+        } else {
+            $filename = null;
         }
         Page::create([
             'title' => $request->title,

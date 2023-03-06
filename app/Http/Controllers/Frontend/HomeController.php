@@ -11,6 +11,7 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Post::with(['category', 'user'])->where('status', 'published')->get();
+
         return view('pages.index', [
             'posts' => $posts,
         ]);

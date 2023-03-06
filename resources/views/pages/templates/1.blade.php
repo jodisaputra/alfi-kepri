@@ -1,5 +1,7 @@
 @extends('layouts/frontend')
-
+@section('title')
+    {{ $page->title }}
+@endsection
 @section('content')
     <section>
         <div class="container">
@@ -9,7 +11,8 @@
                     <!-- breadcrumb -->
                     <nav class="d-flex justify-content-center" aria-label="breadcrumb">
                         <ol class="breadcrumb breadcrumb-dots mb-0">
-                            <li class="breadcrumb-item"><a href="{{ route('frontend.index') }}"><i class="bi bi-house me-1"></i> Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('frontend.index') }}"><i
+                                        class="bi bi-house me-1"></i> Home</a></li>
                             <li class="breadcrumb-item active">{{ $page->title }}</li>
                         </ol>
                     </nav>

@@ -1,5 +1,7 @@
 @extends('layouts/frontend')
-
+@section('title')
+    {{ $page->title }}
+@endsection
 @section('content')
     <section class="pt-4">
         <div class="container">

@@ -1,5 +1,5 @@
 @extends('layouts/frontend')
-
+@section('title', 'Beranda')
 @section('content')
     <section class="pt-3 pb-3 mb-2 card-grid">
         <div class="container">

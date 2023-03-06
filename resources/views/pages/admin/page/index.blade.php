@@ -10,7 +10,8 @@
                 <div class="col-lg-12">
                     <x-card>
                         <x-card-header>
-                            <x-link style="info btn-sm" url="{{ route('pages.create') }}"><i class="fas fa-plus"></i> Add New</x-link>
+                            <x-link style="info btn-sm" url="{{ route('pages.create') }}"><i class="fas fa-plus"></i> Add New
+                            </x-link>
                         </x-card-header>
                         <x-card-body>
                             <table id="example2" class="table table-bordered table-hover">
@@ -31,15 +32,24 @@
                                                 {{ $page->title }}
                                             </td>
                                             <td>{{ $page->slug }}</td>
-                                            <td><img style="width: 20%; height: 20%;" src="{{ asset('storage/page/' . $page->image) }}" alt=""></td>
+                                            <td>
+                                                @if ($page->image == null || $page->image == '')
+                                                    <span class="text-muted">No Image</span>
+                                                @else
+                                                    <img style="width: 20%; height: 20%;"
+                                                        src="{{ asset('storage/page/' . $page->image) }}" alt="">
+                                                @endif
+                                            </td>
                                             <td>
                                                 <x-link style="warning" url="{{ route('pages.edit', $page->id) }}">
                                                     <i class="fas fa-edit"></i> Edit
                                                 </x-link>
-                                                <form action="{{ route('pages.destroy', $page->id) }}" method="POST" class="d-inline" onclick="return confirm('Are you sure?')">
+                                                <form action="{{ route('pages.destroy', $page->id) }}" method="POST"
+                                                    class="d-inline" onclick="return confirm('Are you sure?')">
                                                     @csrf
                                                     @method('delete')
-                                                    <x-button type="submit" style="btn btn-danger"><i class="fas fa-trash"></i> Delete</x-button>
+                                                    <x-button type="submit" style="btn btn-danger"><i
+                                                            class="fas fa-trash"></i> Delete</x-button>
                                                 </form>
                                             </td>
                                         </tr>
