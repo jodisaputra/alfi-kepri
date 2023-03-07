@@ -9,8 +9,9 @@
     <meta name="author" content="Webestica.com">
     <meta name="description" content="Bootstrap based News, Magazine and Blog Theme">
 
+    @stack('styles-top')
     @include('includes/frontend/styles')
-
+    @stack('styles-down')
 </head>
 
 <body>
@@ -20,7 +21,7 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <!-- Logo START -->
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="{{ route('frontend.index') }}">
                     <img class="navbar-brand-item light-mode-item" src="{{ asset('logo') }}/logo.png" alt="logo">
                     <img class="navbar-brand-item dark-mode-item" src="{{ asset('logo') }}/logo.png" alt="logo">
                 </a>
@@ -38,15 +39,13 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav navbar-nav-scroll mx-auto">
 
-                        <li class="nav-item"> <a
-                                class="nav-link {{ (request()->is('/')) ? 'active' : '' }}"
+                        <li class="nav-item"> <a class="nav-link {{ request()->is('/') ? 'active' : '' }}"
                                 href="{{ route('frontend.index') }}">Beranda</a></li>
                         @php
                             $pages = \App\Models\Page::all();
                         @endphp
                         @foreach ($pages as $item)
-                            <li class="nav-item"><a
-                                    class="nav-link {{ (request()->is($item->slug)) ? 'active' : '' }}"
+                            <li class="nav-item"><a class="nav-link {{ request()->is($item->slug) ? 'active' : '' }}"
                                     href="{{ url($item->slug) }}">{{ $item->title }}</a></li>
                         @endforeach
                     </ul>
@@ -89,7 +88,9 @@
     <!-- Back to top -->
     <div class="back-top"><i class="bi bi-arrow-up-short"></i></div>
 
+    @stack('scripts-top')
     @include('includes/frontend/scripts')
+    @stack('scripts-down')
 
 </body>
 

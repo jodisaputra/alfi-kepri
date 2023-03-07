@@ -7,13 +7,15 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CKEditorController;
 use App\Http\Controllers\CheckSlugController;
 use App\Http\Controllers\Backend\PostController;
-use App\Http\Controllers\Frontend\PageController as PageControllerFrontend;
+use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\TemplateController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PageController as PageControllerBackend;
-use App\Http\Controllers\Backend\TemplateController;
+use App\Http\Controllers\Frontend\PageController as PageControllerFrontend;
 
-Route::get('/', [\App\Http\Controllers\frontend\HomeController::class, 'index'])->name('frontend.index');
+Route::get('/', [HomeController::class, 'index'])->name('frontend.index');
+Route::get('/post/{slug}', [HomeController::class, 'post'])->name('frontend.detailpost');
 Route::get('/login', function () {
     echo 'Login';
 })->name('login');

@@ -1,5 +1,5 @@
 <!-- Favicon -->
-<link rel="shortcut icon" href="{{ asset('frontend') }}/assets/images/favicon.ico">
+<link rel="shortcut icon" href="{{ asset('logo') }}/logo.png">
 
 <!-- Google Font -->
 <link rel="preconnect" href="https://fonts.gstatic.com">

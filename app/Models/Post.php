@@ -30,4 +30,15 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function next()
+    {
+        // get next post
+        return Post::where('id', '>', $this->id)->orderBy('id', 'asc')->first();
+    }
+    public  function previous()
+    {
+        // get previous  post
+        return Post::where('id', '<', $this->id)->orderBy('id', 'desc')->first();
+    }
 }

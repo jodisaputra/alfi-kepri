@@ -53,13 +53,14 @@
             <div class="row mt-4 mb-2">
                 <h1>Berita</h1>
             </div>
-            @forelse ($posts as $post)
-                <div class="row g-4">
+            <div class="row g-4">
+                @forelse ($posts as $post)
                     <x-blog-card category="{{ $post->category->name }}" title="{{ $post->title }}"
-                        image="{{ $post->image }}" urlcategory="{{ $post->slug }}" urlpost="{{ $post->slug }}"
+                        image="{{ $post->image }}" urlcategory="{{ $post->slug }}"
+                        urlpost="{{ route('frontend.detailpost', $post->slug) }}"
                         date="{{ $post->created_at->diffForHumans() }}" user="{{ $post->user->name }}"></x-blog-card>
-                </div>
-            @empty
+                @empty
+            </div>
             <div class="row">
                 <p>Belum ada Berita</p>
             </div>
